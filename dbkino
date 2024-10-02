@@ -1,0 +1,35 @@
+Klient {
+	idKlienta integer pk increments unique
+	imie varchar(20)
+	nazwisko varchar(30)
+}
+
+Bilet {
+	idBiletu integer pk increments unique
+	idRzedu integer > Rząd.idRzedu
+	idMiejsca integer > Miejsce.idMiejsca
+	idSeansu integer > Seans.idSeansu
+	idSali integer > Sale.idSali
+	idKlienta integer *> Klient.idKlienta
+}
+
+Seans {
+	idSeansu integer pk increments unique
+	numer_seansu varchar(50) >* Sale.idSali
+}
+
+Sale {
+	idSali integer pk increments unique
+	numer_sali integer
+}
+
+Miejsce {
+	idMiejsca integer pk increments unique
+	numer_miejsca integer(2) > Sale.idSali
+}
+
+Rząd {
+	idRzedu integer pk increments unique
+	numer_rzedu integer > Sale.idSali
+}
+
